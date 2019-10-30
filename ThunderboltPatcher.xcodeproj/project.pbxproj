@@ -7,22 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE0A701F2363A011003A6B66 /* TBPPatchSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A701E2363A011003A6B66 /* TBPPatchSet.m */; };
 		CE0A70202363A011003A6B66 /* TBPPatchSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A701E2363A011003A6B66 /* TBPPatchSet.m */; };
-		CE0A70232363A18F003A6B66 /* TBPPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A70222363A18F003A6B66 /* TBPPatch.m */; };
 		CE0A70242363A18F003A6B66 /* TBPPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A70222363A18F003A6B66 /* TBPPatch.m */; };
-		CE1337A423621429008A58E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1337A323621429008A58E8 /* AppDelegate.swift */; };
-		CE1337A623621429008A58E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1337A523621429008A58E8 /* ContentView.swift */; };
-		CE1337A82362142C008A58E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1337A72362142C008A58E8 /* Assets.xcassets */; };
-		CE1337AB2362142C008A58E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1337AA2362142C008A58E8 /* Preview Assets.xcassets */; };
-		CE1337AE2362142C008A58E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1337AC2362142C008A58E8 /* Main.storyboard */; };
 		CE1337BE23621641008A58E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337BD23621641008A58E8 /* main.m */; };
-		CE1337C72362185B008A58E8 /* HPMController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337C62362185B008A58E8 /* HPMController.m */; };
 		CE1337C82362185B008A58E8 /* HPMController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337C62362185B008A58E8 /* HPMController.m */; };
-		CE1337CB236223F8008A58E8 /* TPS6598XDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337CA236223F8008A58E8 /* TPS6598XDevice.m */; };
 		CE1337CC236223F8008A58E8 /* TPS6598XDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337CA236223F8008A58E8 /* TPS6598XDevice.m */; };
-		CE1337CF23623913008A58E8 /* TBPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337CE23623913008A58E8 /* TBPManager.m */; };
 		CE1337D023623913008A58E8 /* TBPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337CE23623913008A58E8 /* TBPManager.m */; };
+		CE2051EB236809E400DCC481 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2051EA236809E400DCC481 /* AppDelegate.swift */; };
+		CE2051ED236809E400DCC481 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2051EC236809E400DCC481 /* ViewController.swift */; };
+		CE2051EF236809E600DCC481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2051EE236809E600DCC481 /* Assets.xcassets */; };
+		CE2051F2236809E600DCC481 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2051F0236809E600DCC481 /* Main.storyboard */; };
+		CE2051F8236809F900DCC481 /* HPMController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337C62362185B008A58E8 /* HPMController.m */; };
+		CE2051F9236809FF00DCC481 /* TBPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337CE23623913008A58E8 /* TBPManager.m */; };
+		CE2051FA23680A0200DCC481 /* TBPPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A70222363A18F003A6B66 /* TBPPatch.m */; };
+		CE2051FB23680A0400DCC481 /* TBPPatchSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0A701E2363A011003A6B66 /* TBPPatchSet.m */; };
+		CE2051FC23680A0600DCC481 /* TPS6598XDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1337CA236223F8008A58E8 /* TPS6598XDevice.m */; };
+		CE3F6AF523694DC9001F5AB5 /* TBPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F6AF423694DC9001F5AB5 /* TBPLogger.m */; };
+		CE3F6AF623694DC9001F5AB5 /* TBPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F6AF423694DC9001F5AB5 /* TBPLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,14 +43,6 @@
 		CE0A701E2363A011003A6B66 /* TBPPatchSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBPPatchSet.m; sourceTree = "<group>"; };
 		CE0A70212363A18F003A6B66 /* TBPPatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBPPatch.h; sourceTree = "<group>"; };
 		CE0A70222363A18F003A6B66 /* TBPPatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBPPatch.m; sourceTree = "<group>"; };
-		CE1337A023621429008A58E8 /* GUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE1337A323621429008A58E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE1337A523621429008A58E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		CE1337A72362142C008A58E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE1337AA2362142C008A58E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CE1337AD2362142C008A58E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE1337AF2362142C008A58E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE1337B02362142C008A58E8 /* ThunderboltPatcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThunderboltPatcher.entitlements; sourceTree = "<group>"; };
 		CE1337BB23621641008A58E8 /* tbpatch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tbpatch; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1337BD23621641008A58E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE1337C32362179A008A58E8 /* AppleHPMLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppleHPMLib.h; sourceTree = "<group>"; };
@@ -60,18 +53,26 @@
 		CE1337CA236223F8008A58E8 /* TPS6598XDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPS6598XDevice.m; sourceTree = "<group>"; };
 		CE1337CD23623913008A58E8 /* TBPManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBPManager.h; sourceTree = "<group>"; };
 		CE1337CE23623913008A58E8 /* TBPManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBPManager.m; sourceTree = "<group>"; };
-		CE33A5AF236434AE0074373C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CE2051E8236809E400DCC481 /* TBPatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBPatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE2051EA236809E400DCC481 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE2051EC236809E400DCC481 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE2051EE236809E600DCC481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE2051F1236809E600DCC481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE2051F3236809E600DCC481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE2051F4236809E600DCC481 /* GUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GUI.entitlements; sourceTree = "<group>"; };
+		CE3F6AF323694DC9001F5AB5 /* TBPLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBPLogger.h; sourceTree = "<group>"; };
+		CE3F6AF423694DC9001F5AB5 /* TBPLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBPLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CE13379D23621429008A58E8 /* Frameworks */ = {
+		CE1337B823621641008A58E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE1337B823621641008A58E8 /* Frameworks */ = {
+		CE2051E5236809E400DCC481 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -84,10 +85,9 @@
 		CE13379723621429008A58E8 = {
 			isa = PBXGroup;
 			children = (
-				CE33A5AF236434AE0074373C /* README.md */,
 				CE1337C2236216B5008A58E8 /* Core */,
-				CE1337A223621429008A58E8 /* GUI */,
 				CE1337BC23621641008A58E8 /* CLI */,
+				CE2051E9236809E400DCC481 /* GUI */,
 				CE1337A123621429008A58E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,32 +95,10 @@
 		CE1337A123621429008A58E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE1337A023621429008A58E8 /* GUI.app */,
 				CE1337BB23621641008A58E8 /* tbpatch */,
+				CE2051E8236809E400DCC481 /* TBPatch.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CE1337A223621429008A58E8 /* GUI */ = {
-			isa = PBXGroup;
-			children = (
-				CE1337A323621429008A58E8 /* AppDelegate.swift */,
-				CE1337A523621429008A58E8 /* ContentView.swift */,
-				CE1337A72362142C008A58E8 /* Assets.xcassets */,
-				CE1337AC2362142C008A58E8 /* Main.storyboard */,
-				CE1337AF2362142C008A58E8 /* Info.plist */,
-				CE1337B02362142C008A58E8 /* ThunderboltPatcher.entitlements */,
-				CE1337A92362142C008A58E8 /* Preview Content */,
-			);
-			path = GUI;
-			sourceTree = "<group>";
-		};
-		CE1337A92362142C008A58E8 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				CE1337AA2362142C008A58E8 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		CE1337BC23621641008A58E8 /* CLI */ = {
@@ -137,6 +115,8 @@
 				CE1337C32362179A008A58E8 /* AppleHPMLib.h */,
 				CE1337C52362185B008A58E8 /* HPMController.h */,
 				CE1337C62362185B008A58E8 /* HPMController.m */,
+				CE3F6AF323694DC9001F5AB5 /* TBPLogger.h */,
+				CE3F6AF423694DC9001F5AB5 /* TBPLogger.m */,
 				CE1337CD23623913008A58E8 /* TBPManager.h */,
 				CE1337CE23623913008A58E8 /* TBPManager.m */,
 				CE0A70212363A18F003A6B66 /* TBPPatch.h */,
@@ -150,26 +130,22 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		CE2051E9236809E400DCC481 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				CE2051EA236809E400DCC481 /* AppDelegate.swift */,
+				CE2051EC236809E400DCC481 /* ViewController.swift */,
+				CE2051EE236809E600DCC481 /* Assets.xcassets */,
+				CE2051F0236809E600DCC481 /* Main.storyboard */,
+				CE2051F3236809E600DCC481 /* Info.plist */,
+				CE2051F4236809E600DCC481 /* GUI.entitlements */,
+			);
+			path = GUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE13379F23621429008A58E8 /* GUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE1337B32362142C008A58E8 /* Build configuration list for PBXNativeTarget "GUI" */;
-			buildPhases = (
-				CE13379C23621429008A58E8 /* Sources */,
-				CE13379D23621429008A58E8 /* Frameworks */,
-				CE13379E23621429008A58E8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = GUI;
-			productName = ThunderboltPatcher;
-			productReference = CE1337A023621429008A58E8 /* GUI.app */;
-			productType = "com.apple.product-type.application";
-		};
 		CE1337BA23621641008A58E8 /* CLI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE1337BF23621641008A58E8 /* Build configuration list for PBXNativeTarget "CLI" */;
@@ -187,6 +163,23 @@
 			productReference = CE1337BB23621641008A58E8 /* tbpatch */;
 			productType = "com.apple.product-type.tool";
 		};
+		CE2051E7236809E400DCC481 /* GUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE2051F5236809E600DCC481 /* Build configuration list for PBXNativeTarget "GUI" */;
+			buildPhases = (
+				CE2051E4236809E400DCC481 /* Sources */,
+				CE2051E5236809E400DCC481 /* Frameworks */,
+				CE2051E6236809E400DCC481 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GUI;
+			productName = GUI;
+			productReference = CE2051E8236809E400DCC481 /* TBPatch.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,11 +190,10 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = osy86;
 				TargetAttributes = {
-					CE13379F23621429008A58E8 = {
-						CreatedOnToolsVersion = 11.1;
-						LastSwiftMigration = 1110;
-					};
 					CE1337BA23621641008A58E8 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					CE2051E7236809E400DCC481 = {
 						CreatedOnToolsVersion = 11.1;
 					};
 				};
@@ -219,40 +211,25 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE13379F23621429008A58E8 /* GUI */,
 				CE1337BA23621641008A58E8 /* CLI */,
+				CE2051E7236809E400DCC481 /* GUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CE13379E23621429008A58E8 /* Resources */ = {
+		CE2051E6236809E400DCC481 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1337AE2362142C008A58E8 /* Main.storyboard in Resources */,
-				CE1337AB2362142C008A58E8 /* Preview Assets.xcassets in Resources */,
-				CE1337A82362142C008A58E8 /* Assets.xcassets in Resources */,
+				CE2051EF236809E600DCC481 /* Assets.xcassets in Resources */,
+				CE2051F2236809E600DCC481 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CE13379C23621429008A58E8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE0A701F2363A011003A6B66 /* TBPPatchSet.m in Sources */,
-				CE1337A623621429008A58E8 /* ContentView.swift in Sources */,
-				CE1337A423621429008A58E8 /* AppDelegate.swift in Sources */,
-				CE0A70232363A18F003A6B66 /* TBPPatch.m in Sources */,
-				CE1337CB236223F8008A58E8 /* TPS6598XDevice.m in Sources */,
-				CE1337CF23623913008A58E8 /* TBPManager.m in Sources */,
-				CE1337C72362185B008A58E8 /* HPMController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CE1337B723621641008A58E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -260,19 +237,35 @@
 				CE0A70202363A011003A6B66 /* TBPPatchSet.m in Sources */,
 				CE0A70242363A18F003A6B66 /* TBPPatch.m in Sources */,
 				CE1337D023623913008A58E8 /* TBPManager.m in Sources */,
+				CE3F6AF523694DC9001F5AB5 /* TBPLogger.m in Sources */,
 				CE1337C82362185B008A58E8 /* HPMController.m in Sources */,
 				CE1337CC236223F8008A58E8 /* TPS6598XDevice.m in Sources */,
 				CE1337BE23621641008A58E8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE2051E4236809E400DCC481 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE2051FB23680A0400DCC481 /* TBPPatchSet.m in Sources */,
+				CE2051F9236809FF00DCC481 /* TBPManager.m in Sources */,
+				CE2051ED236809E400DCC481 /* ViewController.swift in Sources */,
+				CE2051FA23680A0200DCC481 /* TBPPatch.m in Sources */,
+				CE3F6AF623694DC9001F5AB5 /* TBPLogger.m in Sources */,
+				CE2051FC23680A0600DCC481 /* TPS6598XDevice.m in Sources */,
+				CE2051EB236809E400DCC481 /* AppDelegate.swift in Sources */,
+				CE2051F8236809F900DCC481 /* HPMController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE1337AC2362142C008A58E8 /* Main.storyboard */ = {
+		CE2051F0236809E600DCC481 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CE1337AD2362142C008A58E8 /* Base */,
+				CE2051F1236809E600DCC481 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -336,6 +329,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Core/GUI-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -389,54 +383,8 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Core/GUI-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-			};
-			name = Release;
-		};
-		CE1337B42362142C008A58E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = GUI/ThunderboltPatcher.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"GUI/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GUI/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.osy86.ThunderboltPatcher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Core/GUI-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		CE1337B52362142C008A58E8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = GUI/ThunderboltPatcher.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"GUI/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = GUI/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.osy86.ThunderboltPatcher;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Core/GUI-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -444,7 +392,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_NAME = tbpatch;
 			};
 			name = Debug;
@@ -453,8 +400,45 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_NAME = tbpatch;
+			};
+			name = Release;
+		};
+		CE2051F6236809E600DCC481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GUI/GUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.osy86.GUI;
+				PRODUCT_NAME = TBPatch;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CE2051F7236809E600DCC481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GUI/GUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.osy86.GUI;
+				PRODUCT_NAME = TBPatch;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -470,20 +454,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE1337B32362142C008A58E8 /* Build configuration list for PBXNativeTarget "GUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE1337B42362142C008A58E8 /* Debug */,
-				CE1337B52362142C008A58E8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CE1337BF23621641008A58E8 /* Build configuration list for PBXNativeTarget "CLI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE1337C023621641008A58E8 /* Debug */,
 				CE1337C123621641008A58E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE2051F5236809E600DCC481 /* Build configuration list for PBXNativeTarget "GUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE2051F6236809E600DCC481 /* Debug */,
+				CE2051F7236809E600DCC481 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

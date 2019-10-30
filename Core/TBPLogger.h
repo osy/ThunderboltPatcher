@@ -14,18 +14,19 @@
 // limitations under the License.
 //
 
-import SwiftUI
+#import <Foundation/Foundation.h>
 
-struct ContentView: View {
-    var body: some View {
-        Text("Hello World")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-}
+NS_ASSUME_NONNULL_BEGIN
 
+@interface TBPLogger : NSObject
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+@property (nonatomic, strong) void(^logger)(NSString *);
+
++ (TBPLogger *)sharedInstance;
+- (void)log:(NSString *)fmt, ...;
+
+@end
+
+void TBPLog(NSString *fmt, ...);
+
+NS_ASSUME_NONNULL_END

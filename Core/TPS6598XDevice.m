@@ -14,6 +14,7 @@
 // limitations under the License.
 //
 
+#import "TBPLogger.h"
 #import "TPS6598XDevice.h"
 
 @implementation TPS6598XDevice
@@ -90,7 +91,7 @@
         } else {
             _address = address;
             if (self.deviceId == 0) {
-                NSLog(@"Invalid address: %llx", address);
+                TBPLog(@"Invalid address: %llx", address);
                 self = nil;
             }
         }
@@ -137,7 +138,7 @@
         [self createInputParams:tmp address:offset size:0];
         // read command
         if ((ret = [self runCommand:kTPSCmdFlashRead input:tmp output:tmp]) != kIOReturnSuccess) {
-            NSLog(@"Read failed at 0x%08X", offset);
+            TBPLog(@"Read failed at 0x%08X", offset);
             return ret;
         }
         // write out to buffer
@@ -174,7 +175,7 @@
     ret = [self runCommand:kTPSCmdFlashErase input:tmp output:tmp];
     if (ret == kIOReturnSuccess) {
         if (tmp[0] != 0x00) {
-            NSLog(@"Erase 0x%08X failed with: 0x%02X", offset, tmp[0]);
+            TBPLog(@"Erase 0x%08X failed with: 0x%02X", offset, tmp[0]);
             ret = kIOReturnError;
         }
     }
@@ -201,16 +202,16 @@
     if ((ret = [self runCommand:kTPSCmdFlashAddressStart input:tmp output:tmp]) != kIOReturnSuccess) {
         return ret;
     } else if (tmp[0] != 0x00) {
-        NSLog(@"Set write address failed with: 0x%02X", tmp[0]);
+        TBPLog(@"Set write address failed with: 0x%02X", tmp[0]);
         return kIOReturnError;
     }
     while (length > 0) {
         ret = [self runCommand:kTPSCmdFlashWrite input:buffer output:tmp];
         if (ret != kIOReturnSuccess) {
-            NSLog(@"Write failed at 0x%08X", offset);
+            TBPLog(@"Write failed at 0x%08X", offset);
             return ret;
         } else if (tmp[0] != 0x00) {
-            NSLog(@"Write failed at 0x%08X with: 0x%02X", offset, tmp[0]);
+            TBPLog(@"Write failed at 0x%08X with: 0x%02X", offset, tmp[0]);
             return kIOReturnError;
         }
         buffer += 0x10;

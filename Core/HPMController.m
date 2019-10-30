@@ -14,6 +14,7 @@
 // limitations under the License.
 //
 
+#import "TBPLogger.h"
 #import "HPMController.h"
 
 @implementation HPMController
@@ -24,14 +25,14 @@
         SInt32 score;
         ret = IOCreatePlugInInterfaceForService(service, kAppleHPMLibType, kIOCFPlugInInterfaceID, &_plugin, &score);
         if (ret != kIOReturnSuccess) {
-            NSLog(@"IOCreatePlugInInterfaceForService failed: %x", ret);
+            TBPLog(@"IOCreatePlugInInterfaceForService failed: %x", ret);
             return nil;
         }
         
         HRESULT res;
         res = (*_plugin)->QueryInterface(_plugin, CFUUIDGetUUIDBytes(kAppleHPMLibInterface), (LPVOID)&_device);
         if (res != S_OK) {
-            NSLog(@"QueryInterface failed: %x", res);
+            TBPLog(@"QueryInterface failed: %x", res);
             return nil;
         }
     }

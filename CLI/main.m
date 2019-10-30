@@ -18,6 +18,7 @@
 #import <getopt.h>
 #import <unistd.h>
 #import <Foundation/Foundation.h>
+#import "TBPLogger.h"
 #import "TBPManager.h"
 #import "TPS6598XDevice.h"
 
@@ -83,13 +84,13 @@ int listDevices(TBPManager *manager, NSString *devPath, NSString *uuid) {
 int patchEeprom(TBPManager *manager, NSString *filePath, NSString *devPath, NSString *uuid, bool reverse) {
     TPS6598XDevice *dev = [manager findDeviceWithPath:devPath uuid:uuid];
     if (!dev) {
-        NSLog(@"Failed to find device with filter path='%@' and UUID='%@'", devPath, uuid);
+        TBPLog(@"Failed to find device with filter path='%@' and UUID='%@'", devPath, uuid);
         return 1;
     }
     NSURL *file = [NSURL fileURLWithPath:filePath isDirectory:NO];
     NSDictionary *data = [NSDictionary dictionaryWithContentsOfURL:file];
     if (!data) {
-        NSLog(@"Failed to read patches from %@", filePath);
+        TBPLog(@"Failed to read patches from %@", filePath);
         return 1;
     }
     
@@ -101,12 +102,12 @@ int patchEeprom(TBPManager *manager, NSString *filePath, NSString *devPath, NSSt
     NSArray *rawPatches = data[@"Patches"];
     NSArray<TBPPatchSet *> *patches = [manager generatePatchSets:rawPatches];
     if (!patches) {
-        NSLog(@"No patches found!");
+        TBPLog(@"No patches found!");
         return 1;
     }
     
     if ([manager eepromPatch:dev patches:patches reverse:reverse] != kIOReturnSuccess) {
-        NSLog(@"Patch failed!");
+        TBPLog(@"Patch failed!");
         return 1;
     }
     
@@ -120,7 +121,7 @@ int patchEeprom(TBPManager *manager, NSString *filePath, NSString *devPath, NSSt
 int dumpEeprom(TBPManager *manager, NSString *filePath, NSString *devPath, NSString *uuid, uint32_t offset, uint32_t size) {
     TPS6598XDevice *dev = [manager findDeviceWithPath:devPath uuid:uuid];
     if (!dev) {
-        NSLog(@"Failed to find device with filter path='%@' and UUID='%@'", devPath, uuid);
+        TBPLog(@"Failed to find device with filter path='%@' and UUID='%@'", devPath, uuid);
         return 1;
     }
     NSData *data = [manager eepromDump:dev at:offset size:size];
@@ -128,7 +129,7 @@ int dumpEeprom(TBPManager *manager, NSString *filePath, NSString *devPath, NSStr
         return 1;
     }
     if (![data writeToFile:filePath atomically:NO]) {
-        NSLog(@"Failed to write dump to %@", filePath);
+        TBPLog(@"Failed to write dump to %@", filePath);
         return 1;
     }
     return 0;
@@ -250,6 +251,9 @@ int main(int argc, const char * argv[]) {
     
     @autoreleasepool {
         TBPManager *manager = [TBPManager sharedInstance];
+        [TBPLogger sharedInstance].logger = ^ (NSString *line) {
+            fprintf(stderr, "%s\n", [line cStringUsingEncoding:NSASCIIStringEncoding]);
+        };
         size_t count = [manager discoverDevices];
         
         if (count == 0) {

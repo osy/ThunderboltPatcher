@@ -14,6 +14,7 @@
 // limitations under the License.
 //
 
+#import "TBPLogger.h"
 #import "TBPManager.h"
 #import "TBPPatch.h"
 
@@ -39,13 +40,13 @@ static TBPManager *sharedInstance = nil;
     
     matching = IOServiceMatching("AppleHPM");
     if (matching == NULL) {
-        NSLog(@"Failed to call IOServiceMatching");
+        TBPLog(@"Failed to call IOServiceMatching");
         return 0;
     }
     
     io_iterator_t services = 0;
     if (IOServiceGetMatchingServices(kIOMasterPortDefault, matching, &services) != kIOReturnSuccess) {
-        NSLog(@"Failed to call IOServiceGetMatchingServices");
+        TBPLog(@"Failed to call IOServiceGetMatchingServices");
         return 0;
     }
     
@@ -63,7 +64,7 @@ static TBPManager *sharedInstance = nil;
     io_service_t service = 0;
     
     if (IORegistryEntryGetChildIterator(bus, kIOServicePlane, &iterator) != kIOReturnSuccess) {
-        NSLog(@"Failed to get iterator for bus %d", bus);
+        TBPLog(@"Failed to get iterator for bus %d", bus);
     }
     
     while ((service = IOIteratorNext(iterator))) {
@@ -80,7 +81,7 @@ static TBPManager *sharedInstance = nil;
     TPS6598XDevice *dev;
     
     if (IORegistryEntryGetPath(device, kIOServicePlane, pathName) != kIOReturnSuccess) {
-        NSLog(@"Failed to get device path for object %d.", device);
+        TBPLog(@"Failed to get device path for object %d.", device);
         return;
     }
     NSAssert(strnlen(pathName, sizeof(pathName)) > 10, @"Invalid device path");
@@ -88,13 +89,13 @@ static TBPManager *sharedInstance = nil;
     
     addrVal = (NSNumber *)[self registry:device forKey:@"Address"];
     if (!addrVal || ![addrVal isKindOfClass:[NSNumber class]]) {
-        NSLog(@"Device %@ not added because of missing Address.", key);
+        TBPLog(@"Device %@ not added because of missing Address.", key);
         return;
     }
     address = [addrVal unsignedLongLongValue];
     dev = [[TPS6598XDevice alloc] initWithService:bus address:address];
     if (!dev) {
-        NSLog(@"Device %@ not added because failed to init.", key);
+        TBPLog(@"Device %@ not added because failed to init.", key);
         return;
     }
     
@@ -139,11 +140,11 @@ static TBPManager *sharedInstance = nil;
 - (nullable NSData *)eepromDump:(TPS6598XDevice *)device at:(uint32_t)offset size:(uint32_t)size {
     NSMutableData *data = [NSMutableData dataWithLength:size];
     if (!data) {
-        NSLog(@"Cannot allocate memory!");
+        TBPLog(@"Cannot allocate memory!");
         return nil;
     }
     if ([device eepromRead:[data mutableBytes] at:offset length:size] != kIOReturnSuccess) {
-        NSLog(@"Dump failed!");
+        TBPLog(@"Dump failed!");
         return nil;
     }
     return data;
@@ -162,7 +163,7 @@ static TBPManager *sharedInstance = nil;
     for (NSDictionary *rawPatch in rawPatches) {
         TBPPatch *patch = [[TBPPatch alloc] initWithDictionary:rawPatch];
         if (!patch) {
-            NSLog(@"Failed to parse patch: %@", rawPatch);
+            TBPLog(@"Failed to parse patch: %@", rawPatch);
             return nil;
         }
         [patches addObject:patch];
@@ -187,7 +188,7 @@ static TBPManager *sharedInstance = nil;
             off = alignedOffset;
         }
         if ((patch.offset + patch.original.length) > alignedOffset + 0x1000) {
-            NSLog(@"Patches that span two 4KiB pages are NOT yet supported. Please break your patches to not span a 4KiB boundary.");
+            TBPLog(@"Patches that span two 4KiB pages are NOT yet supported. Please break your patches to not span a 4KiB boundary.");
             return nil;
         }
         [curPatchSet queuePatch:patch];
@@ -199,51 +200,51 @@ static TBPManager *sharedInstance = nil;
 - (IOReturn)eepromPatch:(TPS6598XDevice *)device patches:(NSArray<TBPPatchSet *> *)patchSets reverse:(bool)reverse {
     uint32_t base;
     IOReturn ret;
-    NSLog(@"Looking for the start address.");
+    TBPLog(@"Looking for the start address.");
     if ((ret = [device eepromRead:(void *)&base at:0 length:sizeof(base)]) != kIOReturnSuccess) {
         return ret;
     }
     if (base == 0x00000000 || base == 0xFFFFFFFF) {
-        NSLog(@"base not found at offset 0x0, trying 0x1000");
+        TBPLog(@"base not found at offset 0x0, trying 0x1000");
         if ((ret = [device eepromRead:(void *)&base at:0x1000 length:sizeof(base)]) != kIOReturnSuccess) {
             return ret;
         }
         if (base == 0x00000000 || base == 0xFFFFFFFF) {
-            NSLog(@"base not found at offset 0x1000, giving up");
+            TBPLog(@"base not found at offset 0x1000, giving up");
             return kIOReturnNotFound;
         }
     }
-    NSLog(@"Found base: 0x%08X", base);
-    NSLog(@"Getting original data for each page and performing verification.");
+    TBPLog(@"Found base: 0x%08X", base);
+    TBPLog(@"Getting original data for each page and performing verification.");
     for (TBPPatchSet *patchSet in patchSets) {
         uint32_t addr = base + patchSet.offset;
         uint8_t data[0x1000];
-        NSLog(@"Getting data for page: 0x%08X", addr);
+        TBPLog(@"Getting data for page: 0x%08X", addr);
         if ((ret = [device eepromRead:data at:addr length:sizeof(data)]) != kIOReturnSuccess) {
             return ret;
         }
         patchSet.data = [NSData dataWithBytes:data length:sizeof(data)];
         TBPPatchData_t dataType = [patchSet dataType];
-        NSLog(@"Data matches patch set for original:%d replacement:%d", !!(dataType & DATA_MATCHES_ORIGINAL), !!(dataType & DATA_MATCHES_REPLACE));
+        TBPLog(@"Data matches patch set for original:%d replacement:%d", !!(dataType & DATA_MATCHES_ORIGINAL), !!(dataType & DATA_MATCHES_REPLACE));
         if (reverse && !(dataType & DATA_MATCHES_REPLACE)) {
-            NSLog(@"Exiting because existing data is not matching replacement.");
+            TBPLog(@"Exiting because existing data is not matching replacement.");
             return kIOReturnError;
         }
         if (!reverse && !(dataType & DATA_MATCHES_ORIGINAL)) {
-            NSLog(@"Exiting because existing data is not matching original.");
+            TBPLog(@"Exiting because existing data is not matching original.");
             return kIOReturnError;
         }
     }
-    NSLog(@"Writing patched pages");
+    TBPLog(@"Writing patched pages");
     for (TBPPatchSet *patchSet in patchSets) {
         NSData *newData = [patchSet patchDataWithOriginal:reverse];
         uint32_t addr = base + patchSet.offset;
-        NSLog(@"Writing page: 0x%08X with %lu patches", addr, (unsigned long)patchSet.numPatches);
+        TBPLog(@"Writing page: 0x%08X with %lu patches", addr, (unsigned long)patchSet.numPatches);
         if ((ret = [device eepromWrite:newData.bytes at:addr length:patchSet.size]) != kIOReturnSuccess) {
             return ret;
         }
     }
-    NSLog(@"Done!");
+    TBPLog(@"Done!");
     return kIOReturnSuccess;
 }
 
