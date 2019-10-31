@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (size_t)discoverDevices;
 - (nullable TPS6598XDevice *)findDeviceWithPath:(nullable NSString *)path uuid:(nullable NSString *)uuid;
 - (nullable NSData *)eepromDump:(TPS6598XDevice *)device at:(uint32_t)offset size:(uint32_t)size;
-- (NSArray<TBPPatchSet *> *)generatePatchSets:(NSArray *)rawPatches;
+- (nullable NSArray<TBPPatchSet *> *)generatePatchSets:(NSArray *)rawPatches;
 - (IOReturn)eepromPatch:(TPS6598XDevice *)device patches:(NSArray<TBPPatchSet *> *)patchSets reverse:(bool)reverse;
 
 @end

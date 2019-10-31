@@ -158,7 +158,7 @@ static TBPManager *sharedInstance = nil;
     }];
 }
 
-- (NSArray<TBPPatchSet *> *)generatePatchSets:(NSArray *)rawPatches {
+- (nullable NSArray<TBPPatchSet *> *)generatePatchSets:(NSArray *)rawPatches {
     NSMutableArray<TBPPatch *> *patches = [NSMutableArray arrayWithCapacity:rawPatches.count];
     for (NSDictionary *rawPatch in rawPatches) {
         TBPPatch *patch = [[TBPPatch alloc] initWithDictionary:rawPatch];

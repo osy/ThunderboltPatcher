@@ -136,6 +136,7 @@
     while (length > 0) {
         memset(tmp, 0, sizeof(tmp));
         [self createInputParams:tmp address:offset size:0];
+        TBPLog(@"Reading 0x%08X", offset);
         // read command
         if ((ret = [self runCommand:kTPSCmdFlashRead input:tmp output:tmp]) != kIOReturnSuccess) {
             TBPLog(@"Read failed at 0x%08X", offset);
@@ -172,6 +173,7 @@
         return kIOReturnInvalid;
     }
     [self createInputParams:tmp address:offset size:length];
+    TBPLog(@"Erasing 0x%08X for 0x%08X bytes", offset, length);
     ret = [self runCommand:kTPSCmdFlashErase input:tmp output:tmp];
     if (ret == kIOReturnSuccess) {
         if (tmp[0] != 0x00) {
@@ -206,6 +208,7 @@
         return kIOReturnError;
     }
     while (length > 0) {
+        TBPLog(@"Writing 0x%08X", offset);
         ret = [self runCommand:kTPSCmdFlashWrite input:buffer output:tmp];
         if (ret != kIOReturnSuccess) {
             TBPLog(@"Write failed at 0x%08X", offset);
