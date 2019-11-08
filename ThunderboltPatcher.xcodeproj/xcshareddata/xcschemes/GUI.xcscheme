@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CE13379F23621429008A58E8"
-               BuildableName = "GUI.app"
+               BlueprintIdentifier = "CE2051E7236809E400DCC481"
+               BuildableName = "TBPatch.app"
                BlueprintName = "GUI"
                ReferencedContainer = "container:ThunderboltPatcher.xcodeproj">
             </BuildableReference>
@@ -44,8 +44,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE13379F23621429008A58E8"
-            BuildableName = "GUI.app"
+            BlueprintIdentifier = "CE2051E7236809E400DCC481"
+            BuildableName = "TBPatch.app"
             BlueprintName = "GUI"
             ReferencedContainer = "container:ThunderboltPatcher.xcodeproj">
          </BuildableReference>
@@ -61,8 +61,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CE13379F23621429008A58E8"
-            BuildableName = "GUI.app"
+            BlueprintIdentifier = "CE2051E7236809E400DCC481"
+            BuildableName = "TBPatch.app"
             BlueprintName = "GUI"
             ReferencedContainer = "container:ThunderboltPatcher.xcodeproj">
          </BuildableReference>
