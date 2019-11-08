@@ -130,17 +130,26 @@
 }
 
 - (IOReturn)eepromRead:(uint8_t *)buffer at:(uint32_t)offset length:(uint32_t)length {
-    uint8_t tmp[16];
+    uint8_t addr[16], tmp[16];
     IOReturn ret;
     
     while (length > 0) {
-        memset(tmp, 0, sizeof(tmp));
-        [self createInputParams:tmp address:offset size:0];
+        memset(addr, 0, sizeof(addr));
+        [self createInputParams:addr address:offset size:0];
         TBPLog(@"Reading 0x%08X", offset);
-        // read command
-        if ((ret = [self runCommand:kTPSCmdFlashRead input:tmp output:tmp]) != kIOReturnSuccess) {
+        if ((ret = [self runCommand:kTPSCmdFlashRead input:addr output:tmp]) != kIOReturnSuccess) {
             TBPLog(@"Read failed at 0x%08X", offset);
             return ret;
+        }
+        // workaround for weird issue where read fails silently
+        // we will keep reading until either we timeout or get working data
+        int tries = 0;
+        while (tries++ < 10 && memcmp(addr, tmp, 16) == 0) {
+            TBPLog(@"Data at 0x%08X looks weird, retrying (try %d)", offset, tries);
+            if ((ret = [self runCommand:kTPSCmdFlashRead input:addr output:tmp]) != kIOReturnSuccess) {
+                TBPLog(@"Read failed at 0x%08X (try %d)", offset, tries);
+                return ret;
+            }
         }
         // write out to buffer
         if (length < 16) {
@@ -214,8 +223,7 @@
             TBPLog(@"Write failed at 0x%08X", offset);
             return ret;
         } else if (tmp[0] != 0x00) {
-            TBPLog(@"Write failed at 0x%08X with: 0x%02X", offset, tmp[0]);
-            return kIOReturnError;
+            TBPLog(@"Warning: potential write fail at 0x%08X with: 0x%02X", offset, tmp[0]);
         }
         buffer += 0x10;
         offset += 0x10;

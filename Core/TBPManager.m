@@ -238,10 +238,27 @@ static TBPManager *sharedInstance = nil;
     TBPLog(@"Writing patched pages");
     for (TBPPatchSet *patchSet in patchSets) {
         NSData *newData = [patchSet patchDataWithOriginal:reverse];
+        uint8_t tmp[patchSet.size];
         uint32_t addr = base + patchSet.offset;
-        TBPLog(@"Writing page: 0x%08X with %lu patches", addr, (unsigned long)patchSet.numPatches);
-        if ((ret = [device eepromWrite:newData.bytes at:addr length:patchSet.size]) != kIOReturnSuccess) {
-            return ret;
+        int tries = 100;
+        do {
+            TBPLog(@"Writing page: 0x%08X with %lu patches", addr, (unsigned long)patchSet.numPatches);
+            if ((ret = [device eepromWrite:newData.bytes at:addr length:patchSet.size]) != kIOReturnSuccess) {
+                return ret;
+            }
+            TBPLog(@"Reading back page: 0x%08X", addr);
+            if ((ret = [device eepromRead:tmp at:addr length:patchSet.size]) != kIOReturnSuccess) {
+                return ret;
+            }
+            if (memcmp(newData.bytes, tmp, patchSet.size) != 0) {
+                TBPLog(@"Read mismatch, trying patch again (%d tries remaining)", tries);
+            } else {
+                break;
+            }
+        } while (--tries > 0);
+        if (tries == 0) {
+            TBPLog(@"Patch failed at page 0x%08X", addr);
+            return kIOReturnError;
         }
     }
     TBPLog(@"Done!");
